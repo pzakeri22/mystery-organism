@@ -1,10 +1,12 @@
-// Returns a random DNA base
+// ------ Starter code for this project ------
+
+//Returns a random DNA base
 const returnRandBase = () => {
   const dnaBases = ['A', 'T', 'C', 'G'];
   return dnaBases[Math.floor(Math.random() * 4)];
 };
 
-// Returns a random single stand of DNA containing 15 bases
+// Returns a random single DNA strand comprising 15 bases
 const mockUpStrand = () => {
   const newStrand = [];
   for (let i = 0; i < 15; i++) {
@@ -14,13 +16,16 @@ const mockUpStrand = () => {
 };
 
 
+// ------ My own code for this project ------
 
-//parisa's code starts here;
-
-// console.log(returnRandBase());
-// console.log(mockUpStrand());
-
-// takes number (no two organisms should have the same number).) & array of 15 DNA bases.
+/* Factory function, passing in a unique specimen number and DNA strand.
+   Returns new pAequor organism containing given specimen number and DNA strand
+   Created a "mutate" method for genetic mutation which changes one randomly chosen DNA base to a different base and returns new DNA strand
+   Created a "compareDna" method which allows comparison of current organism's DNA to another organism, using their specimen number. 
+   Prints message showing % of shared DNA
+   Created a "willLikelySurvive" method which checks if current organism has at least 60% of their DNA comprised of "C" or "G" bases, meaning 
+   they are more likely to survive. If so, returns true, else returns false.
+*/
 
 const pAequorFactory = (specimenNum, dna) => {
   return {
@@ -37,7 +42,6 @@ const pAequorFactory = (specimenNum, dna) => {
       return this.dna;
     },
     compareDna(pAequor) {
-      //parameter is specimenNum.
       let sharedCount = 0;
       for (let i = 0; i<15; i++) {
         if (this.dna[i] === pAequor.dna[i]) {
@@ -65,7 +69,8 @@ const pAequorFactory = (specimenNum, dna) => {
 
   }
 }
-// console.log(pAequorFactory(13,mockUpStrand()));
+
+// Created a function which creates 30 pAequor organisms that are deemed likely to survive
 
 let pAequorCount = 1;
 let pAequorArray = [];
@@ -78,48 +83,3 @@ let pAequorArray = [];
     }
 
   }
-
-
-// ex1 = ['A', 'C', 'T', 'G']
-// ex2 = ['C', 'A', 'T', 'T']
-
-
-// objectTest = {
-//   specimenNum: 13,
-//   dna: ['C','G','C','G','C','G','C','G','C','G','C', 'A', 'T', 'C', 'G'], //mockUpStrand()
-//   mutate() {
-//     const index = Math.floor(Math.random() * 15);
-//     const origBase = this.dna[index] 
-//     let newBase = returnRandBase();
-//     while (origBase === newBase) {
-//       newBase = returnRandBase();
-//     }
-//     this.dna[index] = newBase;
-//     return this.dna;
-//   },
-//   compareDna(pAequor) {
-//     //parameter is specimenNum.
-//     let sharedCount;
-//     for (let i = 0; i<15; i++) {
-//       if (this.dna[i] === pAequor.dna[i]) {
-//         sharedCount++;
-//       }
-//     } 
-//     const sharedDna = (sharedCount / 15) * 100;
-//     console.log(`Specimen #1 and specimen #2 have ${sharedDna}% DNA in common.`)
-//   },
-//   willLikelySurvive() {
-//     let cAndGcount = 0;
-//     for (let i = 0; i<15; i++) {
-//       if (this.dna[i] === 'C' || this.dna[i] === 'G') {
-//         cAndGcount++;
-//       }
-//     } 
-//     console.log(cAndGcount);
-//     const cAndGPercent = (cAndGcount / 15) * 100;
-//     return cAndGPercent >= 60;
-
-//   }
-// }
-
-//   console.log(objectTest.willLikelySurvive());
